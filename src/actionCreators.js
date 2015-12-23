@@ -11,3 +11,7 @@ export function clearFilters() {
 export function changeFilterField(filterId, fieldName) {
   return {type: types.CHANGE_FILTER_FIELD, filterId, fieldName};
 }
+
+export function changeFilterOperator(filterId, operator) {
+  return {type: types.CHANGE_FILTER_OPERATOR, filterId, operator};
+}

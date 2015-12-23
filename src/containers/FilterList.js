@@ -31,7 +31,8 @@ class FilterList extends Component {
     return <FilterItem
       key={filterId}
       availableFields={available}
-      onFieldChange={(fieldName) => actions.changeFilterField(filterId, fieldName)}
+      onFieldChange={fieldName => actions.changeFilterField(filterId, fieldName)}
+      onOperatorChange={operator => actions.changeFilterOperator(filterId, operator)}
       filter={filter} />;
   }
 }

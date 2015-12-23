@@ -1,8 +1,14 @@
-import React, {Component} from 'react';
+import DefaultWidget from './DefaultWidget';
+import * as operators from '../operators';
 
-class StringWidget extends Component {
-  render() {
-    return <div>string widget</div>;
+class StringWidget extends DefaultWidget {
+  getOperators() {
+    return {
+      [operators.CONTAINS]: 'contains',
+      [operators.DOES_NOT_CONTAIN]: "doesn't contains",
+      [operators.EQUALS]: 'is',
+      [operators.NOT_EQUALS]: 'is not'
+    };
   }
 }
 
