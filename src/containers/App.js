@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
+import FilterList from './FilterList';
 
-export class App extends Component {
+class App extends Component {
   render() {
     return (
       <div>
-        <h1>Hello World</h1>
-        <p>All your base are belong to us</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto atque aut laborum non quo recusandae voluptatum? Accusantium adipisci assumenda iure maxime nulla numquam officiis provident, quos, saepe sapiente sint voluptatum?</p>
+        <FilterList />
       </div>
     );
   }
 }
+
+export default App;

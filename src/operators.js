@@ -1,0 +1,12 @@
+export const EQUALS = '=';
+export const NOT_EQUALS = '!=';
+export const GREATER_THAN = '>';
+export const GREATER_THAN_EQUALS = '>=';
+export const LESS_THAN = '<';
+export const LESS_THAN_EQUALS = '<=';
+export const BETWEEN = '~';
+export const NOT_BETWEEN = '!~';
+export const LIKE = '%';
+export const NOT_LIKE = '!%';
+export const CONTAINS = '*';
+export const DOES_NOT_CONTAIN = '!*';
