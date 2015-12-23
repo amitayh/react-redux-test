@@ -1,7 +1,22 @@
 import React, {Component} from 'react';
 import * as operators from '../operators';
+import {throttle} from '../utils';
+
+const ON_CHANGE_THROTTLE = 200;
 
 class DefaultWidget extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: props.value};
+    this.onValueChangeThrottled = throttle(props.onValueChange, ON_CHANGE_THROTTLE);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.value !== nextProps.value) {
+      this.setState({value: nextProps.value});
+    }
+  }
+
   render() {
     return (
       <div>
@@ -44,24 +59,27 @@ class DefaultWidget extends Component {
   }
 
   renderSingleInput() {
-    const {value, onValueChange} = this.props;
-    return this.renderInputElement(value, onValueChange);
+    return this.renderInputElement(this.state.value, this.onValueChange.bind(this));
   }
 
   renderDoubleInputs() {
-    const {value, onValueChange} = this.props;
-    const [value1, value2] = value;
+    const [value1, value2] = this.state.value;
     return (
       <div>
-        {this.renderInputElement(value1, v => onValueChange([v, value2]))}
+        {this.renderInputElement(value1, value => this.onValueChange([value, value2]))}
         and
-        {this.renderInputElement(value2, v => onValueChange([value1, v]))}
+        {this.renderInputElement(value2, value => this.onValueChange([value1, value]))}
       </div>
     )
   }
 
   renderInputElement(value, onChange) {
     return <input value={value} onChange={e => onChange(e.target.value)} />;
+  }
+
+  onValueChange(value) {
+    this.setState({value});
+    this.onValueChangeThrottled(value);
   }
 }
 

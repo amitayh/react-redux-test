@@ -24,6 +24,10 @@ function addFilter(state) {
   });
 }
 
+function removeFilter(state, filterId) {
+  return state.deleteIn(['selected', filterId]);
+}
+
 function clearFilters(state) {
   return state.set('selected', Map());
 }
@@ -57,6 +61,9 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case types.ADD_FILTER:
       return addFilter(state);
+
+    case types.REMOVE_FILTER:
+      return removeFilter(state, action.filterId);
 
     case types.CLEAR_FILTERS:
       return clearFilters(state);

@@ -34,6 +34,7 @@ class FilterList extends Component {
       onFieldChange={fieldName => actions.changeFilterField(filterId, fieldName)}
       onOperatorChange={operator => actions.changeFilterOperator(filterId, operator)}
       onValueChange={value => actions.changeFilterValue(filterId, value)}
+      onRemoveClick={() => actions.removeFilter(filterId)}
       filter={filter} />;
   }
 }

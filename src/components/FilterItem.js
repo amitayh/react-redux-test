@@ -6,6 +6,7 @@ class FilterItem extends Component {
       <li>
         {this.renderAvailable()}
         {this.renderWidget()}
+        <button onClick={this.props.onRemoveClick}>Remove</button>
       </li>
     );
   }
