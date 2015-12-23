@@ -10,7 +10,13 @@ const initialState = Map({
   available: List([fields.name, fields.age, fields.dob, fields.married])
 });
 
-const emptyFilter = Map({field: fields.name, operator: operators.CONTAINS, value: ''});
+function getFilter(fieldName) {
+  const field = fields[fieldName];
+  const {defaultOperator, defaultValue} = field.widget;
+  return Map({field: field, operator: defaultOperator, value: defaultValue});
+}
+
+const emptyFilter = getFilter('name');
 
 function addFilter(state) {
   return state.update('selected', selected => {
@@ -23,11 +29,28 @@ function clearFilters(state) {
 }
 
 function changeFilterField(state, filterId, fieldName) {
-  return state.setIn(['selected', filterId, 'field'], fields[fieldName]);
+  return state.setIn(['selected', filterId], getFilter(fieldName));
+}
+
+function getValue(value, operator) {
+  const isArray = Array.isArray(value);
+  if (operator == operators.BETWEEN || operator == operators.NOT_BETWEEN) {
+    return isArray ? value : [value, null];
+  } else {
+    return isArray ? value[0] : value;
+  }
 }
 
 function changeFilterOperator(state, filterId, operator) {
-  return state.setIn(['selected', filterId, 'operator'], operator);
+  return state.updateIn(['selected', filterId], filter => {
+    return filter
+      .set('operator', operator)
+      .set('value', getValue(filter.get('value'), operator));
+  });
+}
+
+function changeFilterValue(state, filterId, value) {
+  return state.setIn(['selected', filterId, 'value'], value);
 }
 
 export default function (state = initialState, action) {
@@ -43,6 +66,9 @@ export default function (state = initialState, action) {
 
     case types.CHANGE_FILTER_OPERATOR:
       return changeFilterOperator(state, action.filterId, action.operator);
+
+    case types.CHANGE_FILTER_VALUE:
+      return changeFilterValue(state, action.filterId, action.value);
 
     default:
       return state;

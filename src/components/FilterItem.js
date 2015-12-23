@@ -24,10 +24,11 @@ class FilterItem extends Component {
   }
 
   renderWidget() {
-    const {filter, onOperatorChange} = this.props;
+    const {filter, onOperatorChange, onValueChange} = this.props;
     const field = filter.get('field');
     return createElement(field.widget, {
       onOperatorChange: onOperatorChange,
+      onValueChange: onValueChange,
       operator: filter.get('operator'),
       value: filter.get('value')
     });

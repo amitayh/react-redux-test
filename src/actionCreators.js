@@ -15,3 +15,8 @@ export function changeFilterField(filterId, fieldName) {
 export function changeFilterOperator(filterId, operator) {
   return {type: types.CHANGE_FILTER_OPERATOR, filterId, operator};
 }
+
+export function changeFilterValue(filterId, value) {
+  return {type: types.CHANGE_FILTER_VALUE, filterId, value};
+}
+

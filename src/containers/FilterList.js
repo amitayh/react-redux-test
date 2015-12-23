@@ -33,6 +33,7 @@ class FilterList extends Component {
       availableFields={available}
       onFieldChange={fieldName => actions.changeFilterField(filterId, fieldName)}
       onOperatorChange={operator => actions.changeFilterOperator(filterId, operator)}
+      onValueChange={value => actions.changeFilterValue(filterId, value)}
       filter={filter} />;
   }
 }

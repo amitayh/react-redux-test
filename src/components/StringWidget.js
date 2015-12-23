@@ -12,4 +12,7 @@ class StringWidget extends DefaultWidget {
   }
 }
 
+StringWidget.defaultOperator = operators.CONTAINS;
+StringWidget.defaultValue = '';
+
 export default StringWidget;
