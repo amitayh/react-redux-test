@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, createElement} from 'react';
 
 class FilterItem extends Component {
   render() {
@@ -24,7 +24,8 @@ class FilterItem extends Component {
   }
 
   renderWidget() {
-    return this.props.filter.get('operator');
+    const field = this.props.filter.get('field');
+    return createElement(field.widget);
   }
 }
 

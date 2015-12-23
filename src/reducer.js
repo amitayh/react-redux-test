@@ -1,16 +1,16 @@
 import {Map, List} from 'immutable';
 import * as types from './actionTypes';
-import fields, {NAME, AGE, DOB, MARRIED} from './fields';
+import * as fields from './fields';
 import * as operators from './operators';
 
 let nextId = 0;
 
 const initialState = Map({
   selected: Map(),
-  available: List([NAME, AGE, DOB, MARRIED])
+  available: List([fields.name, fields.age, fields.dob, fields.married])
 });
 
-const emptyFilter = Map({field: NAME, operator: operators.EQUALS, value: ''});
+const emptyFilter = Map({field: fields.name, operator: operators.EQUALS, value: null});
 
 function addFilter(state) {
   return state.update('selected', selected => {

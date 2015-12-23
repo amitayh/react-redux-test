@@ -1,11 +1,9 @@
-export const NAME = {name: 'name', displayName: 'Name', widget: 'string'};
-export const AGE = {name: 'age', displayName: 'Age', widget: 'number'};
-export const DOB = {name: 'dob', displayName: 'Date of birth', widget: 'date'};
-export const MARRIED = {name: 'married', displayName: 'Married', widget: 'boolean'};
+import StringWidget from './components/StringWidget';
+import NumberWidget from './components/NumberWidget';
+import DateWidget from './components/DateWidget';
+import BooleanWidget from './components/BooleanWidget';
 
-export default {
-  name: NAME,
-  age: AGE,
-  dob: DOB,
-  married: MARRIED
-};
+export const name = {name: 'name', displayName: 'Name', widget: StringWidget};
+export const age = {name: 'age', displayName: 'Age', widget: NumberWidget};
+export const dob = {name: 'dob', displayName: 'Date of birth', widget: DateWidget};
+export const married = {name: 'married', displayName: 'Married', widget: BooleanWidget};
