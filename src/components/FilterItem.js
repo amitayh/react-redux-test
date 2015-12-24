@@ -3,14 +3,14 @@ import {is} from 'immutable';
 
 class FilterItem extends Component {
   shouldComponentUpdate(nextProps) {
-    const {availableFields, filter} = this.props;
+    const {filter, availableFields} = this.props;
     return !is(nextProps.filter, filter) ||
       !is(nextProps.availableFields, availableFields);
   }
 
   render() {
     return (
-      <li>
+      <li className="filter-item">
         {this.renderAvailable()}
         {this.renderWidget()}
         <button onClick={this.props.onRemoveClick}>Remove</button>

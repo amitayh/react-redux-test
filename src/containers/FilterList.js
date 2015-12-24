@@ -23,7 +23,11 @@ class FilterList extends Component {
       return null;
     }
 
-    return <ul>{selected.entrySeq().map(this.renderItem.bind(this))}</ul>;
+    return (
+      <ul className="filter-list">
+        {selected.entrySeq().map(this.renderItem.bind(this))}
+      </ul>
+    );
   }
 
   renderItem([filterId, filter]) {

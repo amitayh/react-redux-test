@@ -1,4 +1,6 @@
+import React from 'react';
 import DefaultWidget from './DefaultWidget';
+import dateFormat from 'dateformat';
 import * as operators from '../operators';
 
 class DateWidget extends DefaultWidget {
@@ -10,6 +12,13 @@ class DateWidget extends DefaultWidget {
       [operators.BETWEEN]: 'between',
       [operators.NOT_BETWEEN]: 'not between'
     };
+  }
+
+  renderInputElement(value, onChange) {
+    const valueFormatted = value ? dateFormat(value, 'yyyy-mm-dd') : '';
+    const onChangeFormatted = e => onChange(new Date(e.target.value));
+
+    return <input type="date" value={valueFormatted} onChange={onChangeFormatted} />;
   }
 }
 
