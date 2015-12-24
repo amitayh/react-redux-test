@@ -1,6 +1,13 @@
 import React, {Component, createElement} from 'react';
+import {is} from 'immutable';
 
 class FilterItem extends Component {
+  shouldComponentUpdate(nextProps) {
+    const {availableFields, filter} = this.props;
+    return !is(nextProps.filter, filter) ||
+      !is(nextProps.availableFields, availableFields);
+  }
+
   render() {
     return (
       <li>
