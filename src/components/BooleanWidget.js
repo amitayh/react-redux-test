@@ -9,7 +9,7 @@ class BooleanWidget extends Component {
         <input
           type="checkbox"
           checked={value}
-          onChange={e => onValueChange(e.target.checked)} />
+          onChange={(e) => onValueChange(e.target.checked)} />
         True
       </label>
     );

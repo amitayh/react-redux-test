@@ -21,7 +21,7 @@ class FilterItem extends Component {
   renderAvailable() {
     const {availableFields, onFieldChange, filter} = this.props;
     return (
-      <select value={filter.get('field').name} onChange={e => onFieldChange(e.target.value)}>
+      <select value={filter.get('field').name} onChange={(e) => onFieldChange(e.target.value)}>
         {availableFields.map(this.renderField.bind(this))}
       </select>
     );
@@ -35,10 +35,10 @@ class FilterItem extends Component {
     const {filter, onOperatorChange, onValueChange} = this.props;
     const field = filter.get('field');
     return createElement(field.widget, {
-      onOperatorChange: onOperatorChange,
-      onValueChange: onValueChange,
       operator: filter.get('operator'),
-      value: filter.get('value')
+      value: filter.get('value'),
+      onOperatorChange,
+      onValueChange
     });
   }
 }

@@ -16,7 +16,7 @@ class DateWidget extends DefaultWidget {
 
   renderInputElement(value, onChange) {
     const dateAsString = value ? dateFormat(value, 'isoDate') : null;
-    const onChangeWithDate = e => {
+    const onChangeWithDate = (e) => {
       const stringValue = e.target.value;
       onChange(stringValue === '' ? null : new Date(stringValue));
     };

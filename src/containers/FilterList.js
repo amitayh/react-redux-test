@@ -35,9 +35,9 @@ class FilterList extends Component {
     return <FilterItem
       key={filterId}
       availableFields={available}
-      onFieldChange={fieldName => actions.changeFilterField(filterId, fieldName)}
-      onOperatorChange={operator => actions.changeFilterOperator(filterId, operator)}
-      onValueChange={value => actions.changeFilterValue(filterId, value)}
+      onFieldChange={(fieldName) => actions.changeFilterField(filterId, fieldName)}
+      onOperatorChange={(operator) => actions.changeFilterOperator(filterId, operator)}
+      onValueChange={(value) => actions.changeFilterValue(filterId, value)}
       onRemoveClick={() => actions.removeFilter(filterId)}
       filter={filter} />;
   }

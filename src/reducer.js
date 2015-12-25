@@ -13,13 +13,13 @@ const initialState = Map({
 function getFilter(fieldName) {
   const field = fields[fieldName];
   const {defaultOperator, defaultValue} = field.widget;
-  return Map({field: field, operator: defaultOperator, value: defaultValue});
+  return Map({field, operator: defaultOperator, value: defaultValue});
 }
 
 const emptyFilter = getFilter('name');
 
 function addFilter(state) {
-  return state.update('selected', selected => {
+  return state.update('selected', (selected) => {
     return selected.set(++nextId, emptyFilter);
   });
 }
@@ -46,7 +46,7 @@ function getValue(value, operator) {
 }
 
 function changeFilterOperator(state, filterId, operator) {
-  return state.updateIn(['selected', filterId], filter => {
+  return state.updateIn(['selected', filterId], (filter) => {
     return filter
       .set('operator', operator)
       .set('value', getValue(filter.get('value'), operator));

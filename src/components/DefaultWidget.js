@@ -29,7 +29,7 @@ class DefaultWidget extends Component {
   renderOperatorSelector() {
     const {operator, onOperatorChange} = this.props;
     return (
-      <select value={operator} onChange={e => onOperatorChange(e.target.value)}>
+      <select value={operator} onChange={(e) => onOperatorChange(e.target.value)}>
         {this.renderOperators()}
       </select>
     );
@@ -37,7 +37,7 @@ class DefaultWidget extends Component {
 
   renderOperators() {
     const operators = this.getOperators();
-    return Object.keys(operators).map(operator => {
+    return Object.keys(operators).map((operator) => {
       return <option key={operator} value={operator}>{operators[operator]}</option>;
     });
   }
@@ -66,15 +66,15 @@ class DefaultWidget extends Component {
     const [value1, value2] = this.state.value;
     return (
       <div>
-        {this.renderInputElement(value1, value => this.onValueChange([value, value2]))}
+        {this.renderInputElement(value1, (value) => this.onValueChange([value, value2]))}
         and
-        {this.renderInputElement(value2, value => this.onValueChange([value1, value]))}
+        {this.renderInputElement(value2, (value) => this.onValueChange([value1, value]))}
       </div>
     )
   }
 
   renderInputElement(value, onChange) {
-    return <input value={value} onChange={e => onChange(e.target.value)} />;
+    return <input value={value} onChange={(e) => onChange(e.target.value)} />;
   }
 
   onValueChange(value) {

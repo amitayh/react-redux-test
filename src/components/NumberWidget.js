@@ -17,7 +17,7 @@ class NumberWidget extends DefaultWidget {
   }
 
   renderInputElement(value, onChange) {
-    const onChangeWithNumber = e => {
+    const onChangeWithNumber = (e) => {
       const value = parseInt(e.target.value);
       onChange(isNaN(value) ? NumberWidget.defaultValue : value);
     };
