@@ -1,12 +1,15 @@
-import {Map, List} from 'immutable';
+import {Map, OrderedMap, List} from 'immutable';
 import * as types from './actionTypes';
 import * as fields from './fields';
 import * as operators from './operators';
 
 let nextId = 0;
 
+const emptyFilter = getFilter('name');
+const emptySelected = OrderedMap();
+
 const initialState = Map({
-  selected: Map(),
+  selected: emptySelected,
   available: List([fields.name, fields.age, fields.dob, fields.married])
 });
 
@@ -15,8 +18,6 @@ function getFilter(fieldName) {
   const {defaultOperator, defaultValue} = field.widget;
   return Map({field, operator: defaultOperator, value: defaultValue});
 }
-
-const emptyFilter = getFilter('name');
 
 function addFilter(state) {
   return state.update('selected', (selected) => {
@@ -29,7 +30,7 @@ function removeFilter(state, filterId) {
 }
 
 function clearFilters(state) {
-  return state.set('selected', Map());
+  return state.set('selected', emptySelected);
 }
 
 function changeFilterField(state, filterId, fieldName) {

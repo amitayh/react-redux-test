@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import * as operators from '../operators';
-import {throttle} from '../utils';
+import {throttle} from '../functionUtils';
 
 const ON_CHANGE_THROTTLE = 200;
 
