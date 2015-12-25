@@ -11,9 +11,9 @@ class FilterItem extends Component {
   render() {
     return (
       <li className="filter-item">
+        <button className="remove-button" onClick={this.props.onRemoveClick}>✖</button>
         {this.renderAvailable()}
         {this.renderWidget()}
-        <button onClick={this.props.onRemoveClick}>Remove</button>
       </li>
     );
   }

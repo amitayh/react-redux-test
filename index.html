@@ -3,6 +3,17 @@
   <head>
     <title>Redux Filters</title>
     <style>
+      .filter-list {
+        width: 50%;
+      }
+      .filter-item {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        border-bottom: 1px solid #ccc;
+      }
+      .filter-item:last-child {
+        border-bottom: none;
+      }
       .filter-item div {
         display: inline-block;
       }
@@ -10,6 +21,9 @@
       .filter-item select,
       .filter-item button {
         margin: 0 0.5em;
+      }
+      input[type=number] {
+        width: 5em;
       }
     </style>
   </head>

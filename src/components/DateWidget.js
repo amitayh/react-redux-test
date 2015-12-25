@@ -15,10 +15,13 @@ class DateWidget extends DefaultWidget {
   }
 
   renderInputElement(value, onChange) {
-    const valueFormatted = value ? dateFormat(value, 'yyyy-mm-dd') : '';
-    const onChangeFormatted = e => onChange(new Date(e.target.value));
+    const dateAsString = value ? dateFormat(value, 'isoDate') : null;
+    const onChangeWithDate = e => {
+      const stringValue = e.target.value;
+      onChange(stringValue === '' ? null : new Date(stringValue));
+    };
 
-    return <input type="date" value={valueFormatted} onChange={onChangeFormatted} />;
+    return <input type="date" value={dateAsString} onChange={onChangeWithDate} />;
   }
 }
 
