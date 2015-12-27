@@ -1,5 +1,13 @@
 import * as types from './actionTypes';
 
+export function selectField(field) {
+  return {type: types.SELECT_FIELD, field};
+}
+
+export function unselectField(field) {
+  return {type: types.UNSELECT_FIELD, field};
+}
+
 export function addFilter() {
   return {type: types.ADD_FILTER};
 }
@@ -23,4 +31,3 @@ export function changeFilterOperator(filterId, operator) {
 export function changeFilterValue(filterId, value) {
   return {type: types.CHANGE_FILTER_VALUE, filterId, value};
 }
-

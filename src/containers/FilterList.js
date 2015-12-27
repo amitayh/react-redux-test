@@ -6,35 +6,36 @@ import FilterItem from '../components/FilterItem';
 
 class FilterList extends Component {
   render() {
-    const {actions, selected} = this.props;
+    const {actions, filters} = this.props;
     return (
       <div>
+        <h3>Filters</h3>
         {this.renderList()}
         <button onClick={actions.addFilter}>+ Add filter</button>{' | '}
-        <button onClick={actions.clearFilters} disabled={selected.isEmpty()}>Clear all</button>
+        <button onClick={actions.clearFilters} disabled={filters.isEmpty()}>Clear all</button>
       </div>
     );
   }
 
   renderList() {
-    const {selected} = this.props;
+    const {filters} = this.props;
 
-    if (selected.isEmpty()) {
+    if (filters.isEmpty()) {
       return null;
     }
 
     return (
       <ul className="filter-list">
-        {selected.entrySeq().map(this.renderItem.bind(this))}
+        {filters.entrySeq().map(this.renderItem.bind(this))}
       </ul>
     );
   }
 
   renderItem([filterId, filter]) {
-    const {actions, available} = this.props;
+    const {actions, availableFields} = this.props;
     return <FilterItem
       key={filterId}
-      availableFields={available}
+      availableFields={availableFields}
       onFieldChange={(fieldName) => actions.changeFilterField(filterId, fieldName)}
       onOperatorChange={(operator) => actions.changeFilterOperator(filterId, operator)}
       onValueChange={(value) => actions.changeFilterValue(filterId, value)}
@@ -45,8 +46,8 @@ class FilterList extends Component {
 
 function mapStateToProps(state) {
   return {
-    selected: state.get('selected'),
-    available: state.get('available')
+    filters: state.get('filters'),
+    availableFields: state.get('selectedFields')
   };
 }
 

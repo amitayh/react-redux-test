@@ -7,3 +7,4 @@ export const name = {name: 'name', displayName: 'Name', widget: StringWidget};
 export const age = {name: 'age', displayName: 'Age', widget: NumberWidget};
 export const dob = {name: 'dob', displayName: 'Date of birth', widget: DateWidget};
 export const married = {name: 'married', displayName: 'Married', widget: BooleanWidget};
+export const country = {name: 'country', displayName: 'Country', widget: StringWidget};
