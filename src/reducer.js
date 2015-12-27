@@ -9,7 +9,7 @@ const emptyFilters = OrderedMap();
 
 const initialState = Map({
   filters: emptyFilters,
-  selectedFields: Set([fields.name, fields.age, fields.dob, fields.married]),
+  selectedFields: Set([fields.name, fields.age, fields.dob, fields.married, fields.country]),
   availableFields: Set([fields.name, fields.age, fields.dob, fields.married, fields.country])
 });
 

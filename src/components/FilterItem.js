@@ -34,12 +34,14 @@ class FilterItem extends Component {
   renderWidget() {
     const {filter, onOperatorChange, onValueChange} = this.props;
     const field = filter.get('field');
-    return createElement(field.widget, {
+    const props = Object.assign({
       operator: filter.get('operator'),
       value: filter.get('value'),
       onOperatorChange,
       onValueChange
-    });
+    }, field.widgetOptions);
+
+    return createElement(field.widget, props);
   }
 }
 
