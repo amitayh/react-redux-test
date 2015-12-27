@@ -17,13 +17,29 @@
       .filter-item div {
         display: inline-block;
       }
-      .filter-item input,
-      .filter-item select,
-      .filter-item button {
+
+      .multi-select {
+        vertical-align: middle;
+      }
+      .multi-select input,
+      .multi-select select {
+        width: 25em;
+        margin-bottom: 0.5em;
+        display: block;
+      }
+      .multi-select button {
+        margin-right: 0;
+      }
+
+      input, select, button {
+        vertical-align: middle;
         margin: 0 0.5em;
       }
       input[type=number] {
         width: 5em;
+      }
+      select[multiple] {
+        height: 10em;
       }
     </style>
   </head>
