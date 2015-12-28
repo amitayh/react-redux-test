@@ -1,6 +1,7 @@
 import React, {Component, createElement} from 'react';
+import {debounce} from '../functionUtils';
 
-const filter = Array.prototype.filter;
+const SEARCH_DELAY = 200;
 
 function contains(haystack, needle) {
   return haystack.toLowerCase().indexOf(needle) !== -1;
@@ -9,10 +10,8 @@ function contains(haystack, needle) {
 class MultiSelect extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      options: props.options,
-      search: ''
-    };
+    this.state = {options: props.options, search: ''};
+    this.doSearchDebounced = debounce(this.doSearch, SEARCH_DELAY);
   }
 
   render() {
@@ -49,8 +48,7 @@ class MultiSelect extends Component {
     this.props.onChange([]);
   }
 
-  onSearch({target}) {
-    const search = target.value;
+  doSearch(search) {
     let options = this.props.options;
 
     if (search !== '') {
@@ -60,11 +58,17 @@ class MultiSelect extends Component {
       });
     }
 
-    this.setState({options, search});
+    this.setState({options});
+  }
+
+  onSearch({target}) {
+    const search = target.value;
+    this.doSearchDebounced(search);
+    this.setState({search});
   }
 
   onChange({target}) {
-    const selected = filter.call(target.options, (option) => option.selected);
+    const selected = Array.prototype.filter.call(target.options, (option) => option.selected);
     this.props.onChange(selected.map((option) => option.value));
   }
 }

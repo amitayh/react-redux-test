@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import * as operators from '../operators';
-import {throttle} from '../functionUtils';
+import {debounce} from '../functionUtils';
 
-const ON_CHANGE_THROTTLE = 200;
+const ON_CHANGE_DELAY = 200;
 
 class DefaultWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {value: props.value};
-    this.onValueChangeThrottled = throttle(props.onValueChange, ON_CHANGE_THROTTLE);
+    this.onValueChangeDebounced = debounce(props.onValueChange, ON_CHANGE_DELAY);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -79,7 +79,7 @@ class DefaultWidget extends Component {
 
   onValueChange(value) {
     this.setState({value});
-    this.onValueChangeThrottled(value);
+    this.onValueChangeDebounced(value);
   }
 }
 

@@ -16,6 +16,7 @@ class App extends Component {
           Accusantium adipisci assumenda iure maxime nulla numquam officiis provident, quos,
           saepe sapiente sint voluptatum?
         </p>
+        <p><a href="https://github.com/amitayh/react-redux-test">Fork on GitHub</a></p>
 
         <FieldsSelector
           available={availableFields}
