@@ -6,11 +6,12 @@ import * as operators from './operators';
 let nextId = 0;
 
 const emptyFilters = OrderedMap();
+const availableFields = Set([fields.name, fields.age, fields.dob, fields.married, fields.country]);
 
 const initialState = Map({
   filters: emptyFilters,
-  selectedFields: Set([fields.name, fields.age, fields.dob, fields.married, fields.country]),
-  availableFields: Set([fields.name, fields.age, fields.dob, fields.married, fields.country])
+  selectedFields: availableFields,
+  availableFields
 });
 
 function selectField(state, field) {
