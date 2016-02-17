@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import * as actionCreators from '../actionCreators';
 
 class FieldsSelector extends Component {
   render() {
